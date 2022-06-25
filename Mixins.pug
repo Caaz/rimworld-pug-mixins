@@ -2,3 +2,30 @@ mixin Def(type, defName, label)
   #{type+"Def"}
     defname!=defname
     label!=label
+
+    mixin SimpleThinkNode(name)
+  li(Class=name)/
+
+mixin ThinkNode(name, extra)
+  unless block || extra
+    +SimpleThinkNode(name)
+  else
+    li(Class=name)
+      if extra
+        each data, key in extra
+          #{key}!= data
+          
+      if block
+        subNodes
+          block
+
+mixin ThinkNodeSubtree(name)
+  li(Class="ThinkNode_Subtree")
+    treeDef!= name
+
+mixin ThinkTreeDef(defName, thinkRoot="ThinkNode_Priority")
+  ThinkTreeDef&attributes(attributes)
+    +BaseDef(defName)
+    thinkRoot(Class=thinkRoot)
+      subNodes
+        block
