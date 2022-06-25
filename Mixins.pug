@@ -1,7 +1,10 @@
 mixin Def(type, defName, label)
   #{type+"Def"}
-    defname!=defname
-    label!=label
+    defname!=defName
+    if label
+      label!=label
+    if block
+      block
 
 mixin SimpleThinkNode(name)
   li(Class=name)/
