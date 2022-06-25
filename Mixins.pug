@@ -1,6 +1,6 @@
 mixin Def(type, defName, label)
-  #{type+"Def"}
-    defname!=defName
+  #{type+"Def"}&attributes(attributes)
+    defName!=defName
     if label
       label!=label
     if block
