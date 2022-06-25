@@ -24,8 +24,7 @@ mixin ThinkNodeSubtree(name)
     treeDef!= name
 
 mixin ThinkTreeDef(defName, thinkRoot="ThinkNode_Priority")
-  ThinkTreeDef&attributes(attributes)
-    +BaseDef(defName)
+  +Def("ThinkTree", defName)&attributes(attributes)
     thinkRoot(Class=thinkRoot)
       subNodes
         block
