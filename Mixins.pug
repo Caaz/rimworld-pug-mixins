@@ -2,3 +2,16 @@ mixin Def(type, defName, label)
   #{type+"Def"}
     defname!=defname
     label!=label
+
+mixin Array(tag, elements)
+  #{tag}
+    each element in elements
+      if typeof(element) === "object"
+        li
+          +Object(element)
+      else
+        li=element
+  
+mixin Object(object)
+  each value, key in object
+    #{key}=value
